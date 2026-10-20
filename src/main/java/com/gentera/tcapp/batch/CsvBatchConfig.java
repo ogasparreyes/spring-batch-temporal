@@ -1,4 +1,4 @@
-package com.gentera.tcapp.gemini;
+package com.gentera.tcapp.batch;
 
 import com.gentera.tcapp.model.TransaccionCsv;
 import lombok.extern.slf4j.Slf4j;

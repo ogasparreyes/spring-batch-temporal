@@ -1,28 +1,25 @@
 package com.gentera.tcapp.activity;
 
+import com.gentera.tcapp.config.TemporalConstants;
 import io.temporal.spring.boot.ActivityImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.JobExecution;
 import org.springframework.batch.core.job.parameters.JobParameters;
 import org.springframework.batch.core.job.parameters.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobOperator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@ActivityImpl(taskQueues = "CSV_TASK_QUEUE")
+@RequiredArgsConstructor
+@ActivityImpl(taskQueues = TemporalConstants.CSV_TASK_QUEUE)
 public class BatchActivityImpl implements BatchActivity {
 
-    // El operador se encarga de la comunicación directa con el Job y el JobRepository[cite: 1]
-    @Autowired
-    private JobOperator jobOperator;
+    private final JobOperator jobOperator;
+    private final Job importacionCsvJob;
 
-    @Autowired
-    @Qualifier("importacionCsvJob")
-    private Job importacionCsvJob;
 
     @Override
     public void ejecutarMigracionCsv(String idProceso) {

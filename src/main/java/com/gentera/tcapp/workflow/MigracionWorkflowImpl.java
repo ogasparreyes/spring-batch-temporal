@@ -1,13 +1,16 @@
 package com.gentera.tcapp.workflow;
 
 import com.gentera.tcapp.activity.BatchActivity;
+import com.gentera.tcapp.config.TemporalConstants;
 import io.temporal.activity.ActivityOptions;
+import io.temporal.spring.boot.WorkflowImpl;
 import io.temporal.workflow.Workflow;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;
 
 @Slf4j
+@WorkflowImpl(taskQueues = TemporalConstants.CSV_TASK_QUEUE)
 public class MigracionWorkflowImpl implements MigracionWorkflow {
 
     // Stub para invocar la actividad con tiempos de espera definidos[cite: 2, 3]

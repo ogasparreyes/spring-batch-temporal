@@ -1,3 +1,9 @@
 spring:
-  application:
-    environment: UAT
+  temporal:
+    namespace: ${TEMPORAL_NAMESPACE}
+    connection:
+      target: ${TEMPORAL_TARGET}
+      # solo si UAT exige mTLS:
+      # mtls:
+      #   key-file: ${TEMPORAL_MTLS_KEY}
+      #   cert-chain-file: ${TEMPORAL_MTLS_CERT}

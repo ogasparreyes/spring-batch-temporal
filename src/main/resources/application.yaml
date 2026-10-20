@@ -2,7 +2,11 @@ server:
   port: 8081
 spring:
   profiles:
-    active: dev
-  output:
-    ansi:
-      enabled: ALWAYS
+    active: dev            # se puede sobrescribir con la variable SPRING_PROFILES_ACTIVE
+  output.ansi.enabled: ALWAYS
+  batch:
+    job:
+      enabled: false       # ← común: evita que el Job corra al arrancar en cualquier perfil
+  temporal:
+    workers-auto-discovery:
+      packages: com.gentera.tcapp
